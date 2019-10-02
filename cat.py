@@ -1,50 +1,49 @@
 import argparse
 
 
-def create(name, text):
+def create(defined_name, input_text):
     """Return a created file with a user-defined name with the text given by the user."""
-    f = open(name + ".txt", "w+")
-    f.write(text)
+    f = open(defined_name, "w+")
+    f.write(input_text)
     f.close()
-    return f'Successfully created {name}.txt!'
+    return f'Successfully created {defined_name}!'
 
 
-def append(no_of_files, resulting_file):
+def append(list_of_files, result):
     """Append the files identified by the user in a new file with the name given by the user."""
-    f = open(resulting_file + ".txt", "w")
-    for file in no_of_files:
+    f = open(result, "w")
+    for file in list_of_files:
         # f.write(open(input("Enter file name to append: ") + ".txt", "r").read())
-        f.write(open(file+".txt","r").read())
+        f.write(open(file, "r").read())
     f.close()
-    return f"Successfully appended files and created {resulting_file}.txt!"
+    return f"Successfully appended files and created {result}!"
 
 
-def concat(file_to_concat,file_to_rewrite):
+def concat(concat_file, rewrite_file):
     """Concatenate the identified files into the given file."""
-    f = open(file_to_rewrite+".txt","a")
+    f = open(rewrite_file, "a")
 
-    for file in file_to_concat:
-        f.write(open(file+".txt","r").read())
+    for file in concat_file:
+        f.write(open(file, "r").read())
     f.close()
-    return f"Successfully concatenated files into {file_to_rewrite}.txt!"
+    return f"Successfully concatenated files into {rewrite_file}!"
 
 
-def read(files):
+def read(desired_files):
     """Read the files identified."""
-    text = ""
-    for file in files:
-        f = open(file+".txt","r")
-        text += "\n"+f.read()
-    return print(text)
-    f.close()
+    text_in_file = ""
+    for file in desired_files:
+        f = open(file, "r")
+        text_in_file += "\n"+f.read()
+        f.close()
+    return print(text_in_file)
 
 
 parser = argparse.ArgumentParser()
-parser.add_argument("files", nargs="*") # stores the names of files in a list.
-parser.add_argument('-c','--create', action='store_true', help="Create new file.")
-parser.add_argument('-a','--append', action='store_true', help="Append given files in a new file.")
-parser.add_argument('-cat','--concat', action='store_true', help="Concatenates the text in the given files.")
-parser.add_argument('-r','--read', action='store_true', help="Read the given file.")
+parser.add_argument('-c', '--create', action='store_true', help="Create new file.")
+parser.add_argument('-a', '--append', action='store_true', help="Append given files in a new file.")
+parser.add_argument('-cat', '--concat', action='store_true', help="Concatenates the text in the given files.")
+parser.add_argument('-r', '--read', action='store_true', help="Read the given file.")
 args = parser.parse_args()
 
 if args.create:

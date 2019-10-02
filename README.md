@@ -18,21 +18,3 @@ This program contains the following functions:
   
   **Append**: This function appends the given list of files into a new file with a
           user-defined filename.
-          
-## Reminders
-In cases where **_more than one_ file** will be included in the command, always remember to 
-input the desired resulting file **_in the end_** before inputting the function to be called.
-Otherwise, just input the single file name before the command to be called.
-
-For example:
-
-  **Goal**: 
-  
-  To append the files file1.txt, file2.txt, and file3.txt into a new file called 
-  file4.txt.
-  
-  
-  **Command**:
-  
-  \> python cat.py file1 file2 file3 file4 -a
-  

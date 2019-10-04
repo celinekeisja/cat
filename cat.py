@@ -13,7 +13,6 @@ def append(list_of_files, result):
     """Append the files identified by the user in a new file with the name given by the user."""
     f = open(result, "w")
     for file in list_of_files:
-        # f.write(open(input("Enter file name to append: ") + ".txt", "r").read())
         f.write(open(file, "r").read())
     f.close()
     return f"Successfully appended files and created {result}!"
